@@ -1,12 +1,14 @@
-let inputElements = document.getElementsByClassName("code");
+// Your JS code here. If required.
+let inputElements = document.querySelectorAll(".code");
+
 console.log(inputElements.length);
 
 for (let i = 0; i < inputElements.length; i++) {
   inputElements[i].addEventListener("input", (event) => {
     let currentElement = event.target;
-    let code = event.data; // Use event.data to get the input value
+    let code = event.data;
 
-    if (event.inputType === "deleteContentBackward") {
+    if (!code) {
       let prevElement = currentElement.previousElementSibling;
       if (prevElement) {
         prevElement.focus();
