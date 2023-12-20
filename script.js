@@ -1,43 +1,43 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let inputElements = document.querySelectorAll(".code");
+  const inputElements = document.querySelectorAll(".code");
 
-  for (let i = 0; i < inputElements.length; i++) {
-    inputElements[i].addEventListener("input", function (event) {
-      let currentElement = event.target;
-      let code = event.data;
+  inputElements.forEach((inputElement, index) => {
+    inputElement.addEventListener("input", function (event) {
+      const code = event.data;
 
       if (!code) {
-        handleBackspace(currentElement);
+        handleBackspace(inputElement);
         return;
       }
 
       if (code >= "0" && code <= "9") {
-        focusNextInput(currentElement);
+        focusNextInput(index);
       } else {
-        currentElement.value = "";
+        inputElement.value = "";
       }
     });
 
-    inputElements[i].addEventListener("keydown", function (event) {
+    inputElement.addEventListener("keydown", function (event) {
       if (event.key === "Backspace") {
-        event.preventDefault(); // Prevent the default backspace behavior
-        handleBackspace(inputElements[i]);
+        event.preventDefault();
+        handleBackspace(inputElement);
       }
     });
-  }
+  });
 });
 
-function focusNextInput(currentElement) {
-  let nextElement = currentElement.nextElementSibling;
-  if (nextElement) {
-    nextElement.focus();
+function focusNextInput(index) {
+  const inputElements = document.querySelectorAll(".code");
+  const nextIndex = index + 1;
+  if (nextIndex < inputElements.length) {
+    inputElements[nextIndex].focus();
   }
 }
 
 function handleBackspace(currentElement) {
-  let prevElement = currentElement.previousElementSibling;
+  const prevElement = currentElement.previousElementSibling;
   if (prevElement) {
     prevElement.focus();
-    prevElement.value = ""; // Clear the value of the previous input
+    prevElement.value = "";
   }
 }
