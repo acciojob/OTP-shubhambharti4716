@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      if (code >= "0" && code <= "9") {
+      if (/^[0-9]$/.test(code)) {
         focusNextInput(index);
       } else {
         inputElement.value = "";
