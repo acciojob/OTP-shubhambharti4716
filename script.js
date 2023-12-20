@@ -1,4 +1,3 @@
-// Your JS code here. If required.
 document.addEventListener("DOMContentLoaded", function () {
   let inputElements = document.querySelectorAll(".code");
 
