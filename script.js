@@ -1,28 +1,30 @@
-// Your JS code here. If required.
-let inputElements = document.querySelectorAll(".code");
+//your JS code here. If required.
+let inputElements = document.getElementsByClassName("code");
+console.log(inputElements.length)
+for(let i=0; i< inputElements.length; i++){
+	inputElements[i].addEventListener("keyup", (event)=>{
+		let currentElement = event.target ;
+		let code = event.key.charCodeAt(0);
+		console.log(event.key)
+		if(event.key === "Backspace"){
+			let prevElement = currentElement.previousElementSibling ;
+			if(prevElement){
+				prevElement.focus();
+			}
+			return ;
+		}
 
-console.log(inputElements.length);
 
-for (let i = 0; i < inputElements.length; i++) {
-  inputElements[i].addEventListener("input", (event) => {
-    let currentElement = event.target;
-    let code = event.data;
 
-    if (!code) {
-      let prevElement = currentElement.previousElementSibling;
-      if (prevElement) {
-        prevElement.focus();
-      }
-      return;
-    }
+		if(code>=48 && code<=57){
+			let nextElement = currentElement.nextElementSibling ;
+			if(nextElement){
+				nextElement.focus() ;
+			}
 
-    if (code >= "0" && code <= "9") {
-      let nextElement = currentElement.nextElementSibling;
-      if (nextElement) {
-        nextElement.focus();
-      }
-    } else {
-      currentElement.value = ""; // Clear the current input if a non-digit is entered
-    }
-  });
+		}else{
+			event.target.value="" ;
+		}
+	})
+
 }
