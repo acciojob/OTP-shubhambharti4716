@@ -1,50 +1,28 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Verification App</title>
-    <style>
-        /* Add your CSS styles here */
-        .code-container {
-            display: flex;
-        }
-        .code {
-            width: 2em;
-            height: 2em;
-            font-size: 1.5em;
-            text-align: center;
-            margin: 0 0.2em;
-        }
-    </style>
-</head>
-<body>
-    <h1 id="verification_heading">Verify Your Account</h1>
-    <p id="verification_subtext">We emailed you the six digit code acciojob@email.com Enter the code below to confirm your email address.</p>
 
-    <div class="code-container">
-        <input class="code" type="text" maxlength="1" id="code1" autofocus>
-        <input class="code" type="text" maxlength="1" id="code2">
-        <input class="code" type="text" maxlength="1" id="code3">
-        <input class="code" type="text" maxlength="1" id="code4">
-        <input class="code" type="text" maxlength="1" id="code5">
-        <input class="code" type="text" maxlength="1" id="code6">
-    </div>
-    <script>
-        const codeInputs = document.querySelectorAll(".code");
-        codeInputs.forEach((input, index) => {
-            input.addEventListener("input", (event) => {
-                const inputValue = event.target.value;
-                if (inputValue.length === 1) {
-                    if (index < codeInputs.length - 1) {
-                        codeInputs[index + 1].focus();
-                    }
-                }
-            });
-            input.addEventListener("keydown", (event) => {
-                if (event.key === "Backspace" && index > 0) {
-                    codeInputs[index - 1].focus();
-                }
-            });
-        });
-    </script>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Your Application Title</title>
+</head>
+
+<body>
+  <h2 id="verification_heading">Verify Your Account</h2>
+  <p id="verification_subtext">We emailed you a six-digit code to acciojob@email.com. Enter the code below to confirm your email address.</p>
+
+  <div id="code" class="code-container">
+    <input type="text" name="code-1" id="code-1" class="code" maxlength="1" autofocus>
+    <input type="text" name="code-2" id="code-2" class="code" maxlength="1">
+    <input type="text" name="code-3" id="code-3" class="code" maxlength="1">
+    <input type="text" name="code-4" id="code-4" class="code" maxlength="1">
+    <input type="text" name="code-5" id="code-5" class="code" maxlength="1">
+    <input type="text" name="code-6" id="code-6" class="code" maxlength="1">
+  </div>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
